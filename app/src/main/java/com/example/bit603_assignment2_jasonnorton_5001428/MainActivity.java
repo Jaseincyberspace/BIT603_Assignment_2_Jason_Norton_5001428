@@ -51,13 +51,16 @@ public class MainActivity extends AppCompatActivity {
         for(Inventory inventoryItem : inventoryList) {
             inventoryItems += " " + inventoryItem.getItem() + " " + inventoryItem.getQuantity();
         }
-        username.setText(inventoryItems);
+        //username.setText(inventoryItems);
+        username.setText("Jason");
+        password.setText("Sword");
 
         // Deal with button clicks:
         forgotPassword.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Log.d(TAG, "Forgot Password");
+                Intent i = new Intent(getApplicationContext(), ResetPasswordActivity.class);
+                startActivity(i);
             }
         });
 
