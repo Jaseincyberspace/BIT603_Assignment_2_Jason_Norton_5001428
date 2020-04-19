@@ -11,8 +11,10 @@ public class Inventory {
     @PrimaryKey(autoGenerate = true)
     @ColumnInfo(name = "ID")
     private int id;
+
     @ColumnInfo(name ="Item")
     private String item;
+
     @ColumnInfo(name = "Quantity")
     private int quantity;
 

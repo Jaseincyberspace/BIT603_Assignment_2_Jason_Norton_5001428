@@ -15,7 +15,9 @@ import android.widget.TextView;
 import java.util.List;
 
 public class MainActivity extends AppCompatActivity {
+    // Global variables:
     public String TAG = "loginScreenLOGS";
+    public static UserDatabase userDatabase;
     public static InventoryDatabase inventoryDatabase;
 
     @Override
@@ -23,11 +25,21 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
+        // Instantiate the userDatabse which is used for login details. It has the following fields: id, username, password, favourite colour.
+        userDatabase = Room.databaseBuilder(getApplicationContext(), UserDatabase.class, "userDB").allowMainThreadQueries().build();
+
+        // Add supplied list of users: *** Only needs to be done once then this code can be commented out.
+        User user = new User();
+        user.setUsername("Jason");
+        user.setPassword("Sword");
+        user.setFavouriteColour("Red");
+        userDatabase.userDao().addUser(user);
+
         // Instantiate the inventoryDatabase which holds all of the inventory items:
         inventoryDatabase = Room.databaseBuilder(getApplicationContext(), InventoryDatabase.class, "inventoryDB").allowMainThreadQueries().build();
 
-        // Reset database (clears all values from it) -- Used for testing purposes **************************************** DONT FORGET TO REMOVE THIS LINE *********************************************
-        inventoryDatabase.inventoryDao().dropTable();
+        // Reset database (clears all values from it) *************************************************************************************** FOR TESTING ONLY
+        inventoryDatabase.inventoryDao().deleteInventoryItems();
 
         // Add default items to the inventoryDatabase (used for testing purposes):
         Inventory item = new Inventory();
@@ -40,13 +52,21 @@ public class MainActivity extends AppCompatActivity {
         final EditText password = findViewById(R.id.editText_password);
         final Button button_login = findViewById(R.id.button_login);
 
-        // display a string in the username field populated by the items and quantities in the inventoryDatabase:
+        // display a string in the username field populated by the items and quantities in the inventoryDatabase: **************************** FOR TESTING ONLY
         List<Inventory>inventoryList = inventoryDatabase.inventoryDao().getItems();
         String inventoryItems = "";
         for(Inventory inventoryItem : inventoryList) {
             inventoryItems += " " + inventoryItem.getItem() + " " + inventoryItem.getQuantity();
         }
         username.setText(inventoryItems);
+
+        // display a string in the username field populated by the list of users: *********************************************************** FOR TESTING ONLY
+        List<User>userList = userDatabase.userDao().getUsers();
+        String listOfUsers = "";
+        for(User users : userList) {
+            listOfUsers += " " + users.getUsername() + " " + users.getPassword() + " " + users.getFavouriteColour();
+        }
+        username.setText(listOfUsers);
 
         // Deal with button clicks:
         forgotPassword.setOnClickListener(new View.OnClickListener() {
