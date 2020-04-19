@@ -9,5 +9,10 @@
     <string name="login_incorrect_login_details">Incorrect username or password</string>
     <string name="login_reset_password">Reset Password</string>
     <string name="login_try_again">Try again</string>
+    <string name="hi">Hi</string>
+    <string name="inventory">Inventory</string>
+    <string name="sign_out">Sign out</string>
+    <string name="add_item">Add Item</string>
+    <string name="view_stocktake_report">View Stocktake Report</string>
 
 </resources>
