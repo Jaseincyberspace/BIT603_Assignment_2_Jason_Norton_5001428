@@ -3,7 +3,7 @@ package com.example.bit603_assignment2_jasonnorton_5001428;
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.room.Room;
-
+import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.LayoutInflater;
@@ -17,7 +17,6 @@ import java.util.List;
 public class MainActivity extends AppCompatActivity {
     // Global variables:
     public String TAG = "loginScreenLOGS";
-    public static UserDatabase userDatabase;
     public static InventoryDatabase inventoryDatabase;
 
     @Override
@@ -25,32 +24,26 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        // Instantiate the userDatabse which is used for login details. It has the following fields: id, username, password, favourite colour.
-        userDatabase = Room.databaseBuilder(getApplicationContext(), UserDatabase.class, "userDB").allowMainThreadQueries().build();
+        final TextView forgotPassword = findViewById(R.id.textView_forgotPassword);
+        final EditText username = findViewById(R.id.editText_username);
+        final EditText password = findViewById(R.id.editText_password);
+        final Button button_login = findViewById(R.id.button_login);
 
-        // Add supplied list of users: *** Only needs to be done once then this code can be commented out.
-        User user = new User();
-        user.setUsername("Jason");
-        user.setPassword("Sword");
-        user.setFavouriteColour("Red");
-        userDatabase.userDao().addUser(user);
+        // Create a ListArray of users from a 2 dimensional StringArray held in User.java:
+        User.setUsers();
 
         // Instantiate the inventoryDatabase which holds all of the inventory items:
         inventoryDatabase = Room.databaseBuilder(getApplicationContext(), InventoryDatabase.class, "inventoryDB").allowMainThreadQueries().build();
 
         // Reset database (clears all values from it) *************************************************************************************** FOR TESTING ONLY
         inventoryDatabase.inventoryDao().deleteInventoryItems();
+        // userDatabase.userDao().deleteUsers();
 
         // Add default items to the inventoryDatabase (used for testing purposes):
         Inventory item = new Inventory();
         item.setItem("Flour");
         item.setQuantity(12);
         inventoryDatabase.inventoryDao().addItem(item);
-
-        final TextView forgotPassword = findViewById(R.id.textView_forgotPassword);
-        final EditText username = findViewById(R.id.editText_username);
-        final EditText password = findViewById(R.id.editText_password);
-        final Button button_login = findViewById(R.id.button_login);
 
         // display a string in the username field populated by the items and quantities in the inventoryDatabase: **************************** FOR TESTING ONLY
         List<Inventory>inventoryList = inventoryDatabase.inventoryDao().getItems();
@@ -59,14 +52,6 @@ public class MainActivity extends AppCompatActivity {
             inventoryItems += " " + inventoryItem.getItem() + " " + inventoryItem.getQuantity();
         }
         username.setText(inventoryItems);
-
-        // display a string in the username field populated by the list of users: *********************************************************** FOR TESTING ONLY
-        List<User>userList = userDatabase.userDao().getUsers();
-        String listOfUsers = "";
-        for(User users : userList) {
-            listOfUsers += " " + users.getUsername() + " " + users.getPassword() + " " + users.getFavouriteColour();
-        }
-        username.setText(listOfUsers);
 
         // Deal with button clicks:
         forgotPassword.setOnClickListener(new View.OnClickListener() {
@@ -80,7 +65,14 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
 
-                dialogBoxLoginFailed();
+                // Verify login details:
+                if(User.credentialsVerified(username.getText().toString(), password.getText().toString())) {
+                    Intent i = new Intent(getApplicationContext(), MainMenuActivity.class);
+                    startActivity(i);
+                }
+                else {
+                    dialogBoxLoginFailed();
+                }
             }
         });
 
