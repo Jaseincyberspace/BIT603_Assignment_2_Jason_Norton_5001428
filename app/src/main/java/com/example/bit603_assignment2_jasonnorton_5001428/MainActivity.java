@@ -2,6 +2,8 @@ package com.example.bit603_assignment2_jasonnorton_5001428;
 
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.room.Room;
+
 import android.os.Bundle;
 import android.util.Log;
 import android.view.LayoutInflater;
@@ -10,18 +12,41 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
 
+import java.util.List;
+
 public class MainActivity extends AppCompatActivity {
     public String TAG = "loginScreenLOGS";
+    public static InventoryDatabase inventoryDatabase;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
+        // Instantiate the inventoryDatabase which holds all of the inventory items:
+        inventoryDatabase = Room.databaseBuilder(getApplicationContext(), InventoryDatabase.class, "inventoryDB").allowMainThreadQueries().build();
+
+        // Reset database (clears all values from it) -- Used for testing purposes **************************************** DONT FORGET TO REMOVE THIS LINE *********************************************
+        inventoryDatabase.inventoryDao().dropTable();
+
+        // Add default items to the inventoryDatabase (used for testing purposes):
+        Inventory item = new Inventory();
+        item.setItem("Flour");
+        item.setQuantity(12);
+        inventoryDatabase.inventoryDao().addItem(item);
+
         final TextView forgotPassword = findViewById(R.id.textView_forgotPassword);
         final EditText username = findViewById(R.id.editText_username);
         final EditText password = findViewById(R.id.editText_password);
         final Button button_login = findViewById(R.id.button_login);
+
+        // display a string in the username field populated by the items and quantities in the inventoryDatabase:
+        List<Inventory>inventoryList = inventoryDatabase.inventoryDao().getItems();
+        String inventoryItems = "";
+        for(Inventory inventoryItem : inventoryList) {
+            inventoryItems += " " + inventoryItem.getItem() + " " + inventoryItem.getQuantity();
+        }
+        username.setText(inventoryItems);
 
         // Deal with button clicks:
         forgotPassword.setOnClickListener(new View.OnClickListener() {
