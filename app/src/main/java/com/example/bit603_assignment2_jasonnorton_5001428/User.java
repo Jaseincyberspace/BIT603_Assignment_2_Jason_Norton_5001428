@@ -1,13 +1,7 @@
 package com.example.bit603_assignment2_jasonnorton_5001428;
 
-import androidx.annotation.NonNull;
-import androidx.annotation.Nullable;
-
 import java.util.ArrayList;
-import java.util.Collection;
-import java.util.Iterator;
 import java.util.List;
-import java.util.ListIterator;
 
 public class User {
 
@@ -16,8 +10,9 @@ public class User {
     private String password;
     private String favouriteColour;
     private static String[][] userArray = new String[][] {{"Jason", "Sword", "Red"},{"Billy", "Dinosaur", "Blue"},{"Zack", "Elephant", "Black"},{"Trini", "Tiger", "Yellow"},{"Kimberly", "Bird", "Pink"}};
-    private static List<User> userList = new ArrayList<User>();
-    private static String activeUser = "";
+    private static List<User> userList = new ArrayList<>();
+    // ActiveUser String array contains: id, Username, Password, favouriteColour - in that order.
+    private static String[] activeUser = new String[4];
 
     private User(String username, String password, String favouriteColour) {
         this.id = id++;
@@ -26,22 +21,26 @@ public class User {
         this.favouriteColour = favouriteColour;
     }
 
-    public static void setUsers() {
+    static void setUsers() {
         for (int i = 0; i < userArray.length; i++) {
-            // User user = new User(userArray[i][0], userArray[i][1], userArray[i][2]);
-
-            userList.add(new User(userArray[i][0], userArray[i][1], userArray[i][2]));
+          userList.add(new User(userArray[i][0], userArray[i][1], userArray[i][2]));
         }
     }
 
-    public static Boolean credentialsVerified (String username, String password) {
+    static Boolean credentialsVerified (String username, String password) {
         for(User user : userList) {
+            user.getID();
             user.getUsername();
             user.getPassword();
             user.getFavouriteColour();
             if(username.equals(user.getUsername())) {
-                activeUser = user.getUsername();
+                activeUser[0] = Integer.toString(user.getID());
+                activeUser[1] = user.getUsername();
+                activeUser[2] =  user.getPassword();
+                activeUser[3] = user.getFavouriteColour();
+
                 if(password.equals(user.getPassword())) {
+
                     return true;
                 }
             }
@@ -51,11 +50,15 @@ public class User {
 
     // Getters and Setters:
 
+    public int getID() {
+        return id;
+    }
+
     public String getUsername() {
         return username;
     }
 
-    public String getPassword() {
+    private String getPassword() {
         return password;
     }
 
@@ -63,7 +66,7 @@ public class User {
         this.password = password;
     }
 
-    public String getFavouriteColour() {
+    private String getFavouriteColour() {
         return favouriteColour;
     }
 
