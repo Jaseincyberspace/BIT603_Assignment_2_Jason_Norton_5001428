@@ -23,5 +23,6 @@
     <string name="confrim_password">Confirm Password:</string>
     <string name="back_to_main_menu">Back to main menu</string>
     <string name="update_security_question">Update Security Question</string>
+    <string name="sign_out_dialog_title">Are you sure you want to sign out?</string>
 
 </resources>

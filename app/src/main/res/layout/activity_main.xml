@@ -119,6 +119,7 @@
                 android:layout_marginBottom="16dp"
                 android:background="#454343"
                 android:text="@string/login"
+                android:textAllCaps="false"
                 android:textColor="#FFFFFF"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
