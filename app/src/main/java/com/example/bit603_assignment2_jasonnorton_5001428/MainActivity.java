@@ -108,7 +108,8 @@ public class MainActivity extends AppCompatActivity {
         button_resetPassword.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Log.d(TAG, "User would like to reset their password. **** Programmer needs to add code to switch to the Reset Password Activity");
+                Intent i = new Intent(getApplicationContext(), ResetPasswordActivity.class);
+                startActivity(i);
             }
         });
 

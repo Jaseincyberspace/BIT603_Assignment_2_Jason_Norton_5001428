@@ -26,21 +26,23 @@ public class MainMenuActivity extends AppCompatActivity {
         button_viewInventory.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-
+                Intent i = new Intent(getApplicationContext(), InventoryActivity.class);
+                startActivity(i);
             }
         });
 
         button_viewStocktakeReport.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-
+                //TO DO: ADD CODE TO LINK TO STOCKTAKEREPORT ACTIVITY
             }
         });
 
         button_settings.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-
+                Intent i = new Intent(getApplicationContext(), SettingsActivity.class);
+                startActivity(i);
             }
         });
 
@@ -51,5 +53,8 @@ public class MainMenuActivity extends AppCompatActivity {
                 startActivity(i);
             }
         });
-    }
+
+
+
+    }// end OnCreate method
 }

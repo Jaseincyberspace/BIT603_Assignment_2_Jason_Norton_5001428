@@ -9,10 +9,29 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".SettingsActivity"></activity>
-        <activity android:name=".ResetPasswordActivity" />
+        <activity
+            android:name=".SettingsActivity"
+            android:parentActivityName=".MainMenuActivity">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="com.example.bit603_assignment2_jasonnorton_5001428.MainMenuActivity"/>
+        </activity>
+        <activity
+            android:name=".ResetPasswordActivity"
+            android:launchMode="singleTop"
+            android:parentActivityName=".MainActivity">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="com.example.bit603_assignment2_jasonnorton_5001428.MainMenuActivity"/>
+        </activity>
         <activity android:name=".MainMenuActivity" />
-        <activity android:name=".InventoryActivity" />
+        <activity
+            android:name=".InventoryActivity"
+            android:parentActivityName=".MainActivity">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value=".MainMenuActivity" />
+        </activity>
         <activity android:name=".MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
