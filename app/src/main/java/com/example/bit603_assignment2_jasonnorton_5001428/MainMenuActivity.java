@@ -21,7 +21,6 @@ public class MainMenuActivity extends AppCompatActivity {
         final TextView textView_displayUsername = findViewById(R.id.textView_displayUsername);
         final Button button_viewInventory = findViewById(R.id.button_viewInventory);
         final Button button_viewStocktakeReport = findViewById(R.id.button_viewStocktakeReport);
-        final Button button_settings = findViewById(R.id.button_settings);
         final Button button_signOut = findViewById(R.id.button_signOut);
 
         //Deal with button clicks:
@@ -37,14 +36,6 @@ public class MainMenuActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 //TO DO: ADD CODE TO LINK TO STOCKTAKEREPORT ACTIVITY
-            }
-        });
-
-        button_settings.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent i = new Intent(getApplicationContext(), SettingsActivity.class);
-                startActivity(i);
             }
         });
 

@@ -5,7 +5,6 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.room.Room;
 import android.content.Intent;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.Button;
@@ -59,7 +58,7 @@ public class MainActivity extends AppCompatActivity {
         forgotPassword.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent i = new Intent(getApplicationContext(), ResetPasswordActivity.class);
+                Intent i = new Intent(getApplicationContext(), ForgotPasswordActivity.class);
                 startActivity(i);
             }
         });
@@ -92,7 +91,7 @@ public class MainActivity extends AppCompatActivity {
 
         // Add buttons:
         final Button button_tryAgain = loginFailedDialogLayout.findViewById(R.id.button_tryAgain);
-        final Button button_resetPassword = loginFailedDialogLayout.findViewById(R.id.button_resetPassword);
+        final Button button_resetPassword = loginFailedDialogLayout.findViewById(R.id.button_getPassword);
 
         // Create dialog box and display it on screen:
         final AlertDialog dialog = builder.create();
@@ -108,7 +107,7 @@ public class MainActivity extends AppCompatActivity {
         button_resetPassword.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent i = new Intent(getApplicationContext(), ResetPasswordActivity.class);
+                Intent i = new Intent(getApplicationContext(), ForgotPasswordActivity.class);
                 startActivity(i);
             }
         });

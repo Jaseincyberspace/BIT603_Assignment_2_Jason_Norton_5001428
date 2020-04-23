@@ -10,19 +10,11 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
         <activity
-            android:name=".SettingsActivity"
-            android:parentActivityName=".MainMenuActivity">
-            <meta-data
-                android:name="android.support.PARENT_ACTIVITY"
-                android:value="com.example.bit603_assignment2_jasonnorton_5001428.MainMenuActivity"/>
-        </activity>
-        <activity
-            android:name=".ResetPasswordActivity"
-            android:launchMode="singleTop"
+            android:name=".ForgotPasswordActivity"
             android:parentActivityName=".MainActivity">
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
-                android:value="com.example.bit603_assignment2_jasonnorton_5001428.MainMenuActivity"/>
+                android:value="com.example.bit603_assignment2_jasonnorton_5001428.MainActivity"/>
         </activity>
         <activity android:name=".MainMenuActivity" />
         <activity

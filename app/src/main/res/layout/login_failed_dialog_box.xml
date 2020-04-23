@@ -18,13 +18,13 @@
         android:layout_marginBottom="8dp"
         android:text="@string/login_try_again"
         android:textAllCaps="false"
-        app:layout_constraintBottom_toTopOf="@+id/button_resetPassword"
+        app:layout_constraintBottom_toTopOf="@+id/button_getPassword"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textView2" />
 
     <Button
-        android:id="@+id/button_resetPassword"
+        android:id="@+id/button_getPassword"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="16dp"

@@ -21,18 +21,8 @@ public class User {
         this.favouriteColour = favouriteColour;
     }
 
-    static void setUsers() {
-        for (int i = 0; i < userArray.length; i++) {
-          userList.add(new User(userArray[i][0], userArray[i][1], userArray[i][2]));
-        }
-    }
-
     static Boolean credentialsVerified (String username, String password) {
         for(User user : userList) {
-            user.getID();
-            user.getUsername();
-            user.getPassword();
-            user.getFavouriteColour();
             if(username.equals(user.getUsername())) {
                 activeUser[0] = Integer.toString(user.getID());
                 activeUser[1] = user.getUsername();
@@ -48,7 +38,39 @@ public class User {
     return false;
     }
 
+    static Boolean securityQuestionCorrect (String username, String favouriteColour) {
+        for(User user : userList) {
+            if(username.equals(user.getUsername()) && favouriteColour.equals(user.getFavouriteColour())) {
+                activeUser[0] = Integer.toString(user.getID());
+                activeUser[1] = user.getUsername();
+                activeUser[2] =  user.getPassword();
+                activeUser[3] = user.getFavouriteColour();
+                return true;
+            }
+        }
+        return false;
+    }
+
     // Getters and Setters:
+
+    static void setUserArray(String newPassword) {
+        for(String[] user : userArray) {
+            if(activeUser[1].equals(user[0])) {
+                user[1] = newPassword;
+            }
+        }
+
+    }
+
+    static void setUsers() {
+        for (int i = 0; i < userArray.length; i++) {
+            userList.add(new User(userArray[i][0], userArray[i][1], userArray[i][2]));
+        }
+    }
+
+    static String[] getActiveUser() {
+        return activeUser;
+    }
 
     public int getID() {
         return id;
