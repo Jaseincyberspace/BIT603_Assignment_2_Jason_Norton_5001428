@@ -18,10 +18,14 @@ public class MainMenuActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main_menu);
 
-        final TextView textView_displayUsername = findViewById(R.id.textView_displayUsername);
+        final TextView textView_helloUsername = findViewById(R.id.textView_helloUsername);
         final Button button_viewInventory = findViewById(R.id.button_viewInventory);
         final Button button_viewStocktakeReport = findViewById(R.id.button_viewStocktakeReport);
         final Button button_signOut = findViewById(R.id.button_signOut);
+
+        // Customise welcome message to show username
+        String[] activeUser = User.getActiveUser();
+        textView_helloUsername.setText(getString(R.string.hi) + " " + activeUser[1]);
 
         //Deal with button clicks:
         button_viewInventory.setOnClickListener(new View.OnClickListener() {
