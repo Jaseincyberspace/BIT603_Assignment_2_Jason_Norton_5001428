@@ -16,6 +16,7 @@
         android:layout_marginRight="16dp"
         android:background="#454343"
         android:text="@string/sign_out"
+        android:textAllCaps="false"
         android:textColor="#FFFFFF"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="parent" />

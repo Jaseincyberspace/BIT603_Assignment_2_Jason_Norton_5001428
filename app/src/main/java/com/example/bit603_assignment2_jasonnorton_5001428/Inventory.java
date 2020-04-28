@@ -48,8 +48,4 @@ public class Inventory {
         this.quantity = quantity;
     }
 
-    public void addToQuantity() {this.quantity += 1;}
-
-    public void removeFromQuantity() {this.quantity -= 1;}
-
 } //  End class

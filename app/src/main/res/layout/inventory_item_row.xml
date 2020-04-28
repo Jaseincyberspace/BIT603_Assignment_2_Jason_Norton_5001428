@@ -24,43 +24,20 @@
         android:id="@+id/textView_itemQuantity"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginEnd="8dp"
-        android:layout_marginRight="8dp"
+        android:layout_marginEnd="32dp"
+        android:layout_marginRight="32dp"
         android:text="@string/quantity"
         android:textColor="#000000"
         app:layout_constraintBaseline_toBaselineOf="@+id/textView_itemName"
-        app:layout_constraintEnd_toStartOf="@+id/button_quantitySubtract" />
+        app:layout_constraintEnd_toEndOf="parent" />
 
     <View
         android:id="@+id/view"
         android:layout_width="0dp"
         android:layout_height="1dp"
-        android:layout_marginTop="8dp"
         android:background="#454343"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/button_quantitySubtract" />
-
-    <ImageButton
-        android:id="@+id/button_quantityAdd"
-        android:layout_width="20dp"
-        android:layout_height="20dp"
-        android:layout_marginTop="9dp"
-        android:layout_marginEnd="8dp"
-        android:layout_marginRight="8dp"
-        android:background="@drawable/plus_icon"
-        app:layout_constraintEnd_toStartOf="@+id/textView_itemQuantity"
-        app:layout_constraintTop_toTopOf="parent" />
-
-    <ImageButton
-        android:id="@+id/button_quantitySubtract"
-        android:layout_width="20dp"
-        android:layout_height="20dp"
-        android:layout_marginTop="9dp"
-        android:layout_marginEnd="16dp"
-        android:layout_marginRight="16dp"
-        android:background="@drawable/minus_icon"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        tools:layout_editor_absoluteY="37dp" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

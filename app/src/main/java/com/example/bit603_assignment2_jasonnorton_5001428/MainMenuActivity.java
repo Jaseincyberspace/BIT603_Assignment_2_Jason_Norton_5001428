@@ -3,8 +3,8 @@ package com.example.bit603_assignment2_jasonnorton_5001428;
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 
-import android.content.Context;
 import android.content.Intent;
+import android.graphics.Color;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -19,12 +19,21 @@ public class MainMenuActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main_menu);
 
         final TextView textView_helloUsername = findViewById(R.id.textView_helloUsername);
+        final TextView textView_welcomeMessage = findViewById(R.id.textView_welcomeMessage);
         final Button button_viewInventory = findViewById(R.id.button_viewInventory);
-        final Button button_viewStocktakeReport = findViewById(R.id.button_viewStocktakeReport);
+        final Button button_viewStocktakeReport = findViewById(R.id.button_addItem);
         final Button button_signOut = findViewById(R.id.button_signOut);
 
-        // Customise welcome message to show username
+        // Customise welcome message to show username in the user's favourite colour
         String[] activeUser = User.getActiveUser();
+        String favouriteColour = activeUser[3];
+        try{
+            textView_helloUsername.setTextColor(Color.parseColor(favouriteColour));
+            textView_welcomeMessage.setTextColor(Color.parseColor(favouriteColour));
+        }
+        catch(Exception e) {
+            // If the user's favourite colour can't be displayed it will default to white.
+        }
         textView_helloUsername.setText(getString(R.string.hi) + " " + activeUser[1]);
 
         //Deal with button clicks:

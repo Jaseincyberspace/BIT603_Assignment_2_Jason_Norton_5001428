@@ -27,8 +27,6 @@ public class InventoryAdapter extends RecyclerView.Adapter<InventoryAdapter.View
         super(itemView);
         textView_itemName = (TextView) itemView.findViewById(R.id.textView_itemName);
         textView_itemQuantity = (TextView) itemView.findViewById(R.id.textView_itemQuantity);
-        button_quantityAdd = (ImageButton) itemView.findViewById(R.id.button_quantityAdd);
-        button_quantitySubtract = (ImageButton) itemView.findViewById(R.id.button_quantitySubtract);
     }// end ViewHolder constructor
     }// end ViewHolder class
 
@@ -65,20 +63,6 @@ public class InventoryAdapter extends RecyclerView.Adapter<InventoryAdapter.View
         // Set values and behaviours for row subviews:
         textView_itemName.setText(inventory.getItemName());
         textView_itemQuantity.setText(Integer.toString(inventory.getQuantity()));
-        button_quantityAdd.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                // TODO: UPDATE THE DATABASE TO SHOW AN INCREASE IN QUANTITY FOR THE GIVEN ITEM.
-                textView_itemQuantity.setText("Quantity Increase");
-            }
-        });
-        button_quantitySubtract.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                // TODO: UPDATE THE DATABASE TO SHOW A DECREASE IN QUANTITY FOR THE GIVEN ITEM.
-                textView_itemQuantity.setText("Quantity Decrease");
-            }
-        });
     } // End onBindViewHolder method
 
     @Override

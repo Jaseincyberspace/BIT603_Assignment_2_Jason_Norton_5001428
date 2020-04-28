@@ -39,7 +39,7 @@
                 android:layout_height="40dp"
                 android:layout_marginStart="16dp"
                 android:layout_marginLeft="16dp"
-                android:layout_marginTop="32dp"
+                android:layout_marginTop="16dp"
                 android:layout_marginEnd="16dp"
                 android:layout_marginRight="16dp"
                 android:background="#454343"
@@ -48,24 +48,24 @@
                 android:textColor="#FFFFFF"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/textView_welcomeMessage" />
+                app:layout_constraintTop_toBottomOf="@+id/button_addItem" />
 
             <Button
-                android:id="@+id/button_viewStocktakeReport"
+                android:id="@+id/button_addItem"
                 android:layout_width="0dp"
                 android:layout_height="40dp"
                 android:layout_marginStart="16dp"
                 android:layout_marginLeft="16dp"
-                android:layout_marginTop="16dp"
+                android:layout_marginTop="32dp"
                 android:layout_marginEnd="16dp"
                 android:layout_marginRight="16dp"
                 android:background="#454343"
-                android:text="@string/view_stocktake_report"
+                android:text="@string/add_item"
                 android:textAllCaps="false"
                 android:textColor="#FFFFFF"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/button_viewInventory" />
+                app:layout_constraintTop_toBottomOf="@+id/textView_welcomeMessage" />
 
             <TextView
                 android:id="@+id/textView_welcomeMessage"
@@ -96,7 +96,7 @@
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintHorizontal_bias="0.0"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/button_viewStocktakeReport"
+                app:layout_constraintTop_toBottomOf="@+id/button_addItem"
                 app:layout_constraintVertical_bias="1.0" />
         </androidx.constraintlayout.widget.ConstraintLayout>
     </ScrollView>
