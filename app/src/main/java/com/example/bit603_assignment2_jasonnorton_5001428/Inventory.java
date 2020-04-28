@@ -1,8 +1,13 @@
 package com.example.bit603_assignment2_jasonnorton_5001428;
 
+import android.util.Log;
+
 import androidx.room.ColumnInfo;
 import androidx.room.Entity;
 import androidx.room.PrimaryKey;
+
+import java.util.ArrayList;
+import java.util.HashMap;
 
 @Entity(tableName = "Inventory")
 public class Inventory {
@@ -13,11 +18,12 @@ public class Inventory {
     private int id;
 
     @ColumnInfo(name ="Item")
-    private String item;
+    private String itemName;
 
     @ColumnInfo(name = "Quantity")
     private int quantity;
 
+    // Getters and Setters:
     public int getId() {
         return id;
     }
@@ -26,12 +32,12 @@ public class Inventory {
         this.id = id;
     }
 
-    public String getItem() {
-        return item;
+    public String getItemName() {
+        return itemName;
     }
 
-    public void setItem(String item) {
-        this.item = item;
+    public void setItemName(String itemName) {
+        this.itemName = itemName;
     }
 
     public int getQuantity() {
@@ -41,4 +47,9 @@ public class Inventory {
     public void setQuantity(int quantity) {
         this.quantity = quantity;
     }
-}
+
+    public void addToQuantity() {this.quantity += 1;}
+
+    public void removeFromQuantity() {this.quantity -= 1;}
+
+} //  End class

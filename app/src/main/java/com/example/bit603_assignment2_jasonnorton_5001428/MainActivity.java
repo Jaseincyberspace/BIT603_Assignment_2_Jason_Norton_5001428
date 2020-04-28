@@ -2,7 +2,7 @@ package com.example.bit603_assignment2_jasonnorton_5001428;
 
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.room.Room;
+
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.LayoutInflater;
@@ -10,13 +10,14 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
-
 import java.util.List;
 
 public class MainActivity extends AppCompatActivity {
+
     // Global variables:
     public String TAG = "loginScreenLOGS";
     public static InventoryDatabase inventoryDatabase;
+    List<Inventory> inventoryList;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -28,28 +29,9 @@ public class MainActivity extends AppCompatActivity {
         final EditText password = findViewById(R.id.editText_password);
         final Button button_login = findViewById(R.id.button_login);
 
-        // Create a ListArray of users from a 2 dimensional StringArray held in User.java:
+        // Create an ArrayList of users from a 2 dimensional StringArray held in User.java:
         User.setUsers();
 
-        // Instantiate the inventoryDatabase which holds all of the inventory items:
-        inventoryDatabase = Room.databaseBuilder(getApplicationContext(), InventoryDatabase.class, "inventoryDB").allowMainThreadQueries().build();
-
-        // Reset database (clears all values from it) *************************************************************************************** FOR TESTING ONLY
-        inventoryDatabase.inventoryDao().deleteInventoryItems();
-        // userDatabase.userDao().deleteUsers();
-
-        // Add default items to the inventoryDatabase (used for testing purposes):
-        Inventory item = new Inventory();
-        item.setItem("Flour");
-        item.setQuantity(12);
-        inventoryDatabase.inventoryDao().addItem(item);
-
-        // display a string in the username field populated by the items and quantities in the inventoryDatabase: **************************** FOR TESTING ONLY
-        List<Inventory>inventoryList = inventoryDatabase.inventoryDao().getItems();
-        String inventoryItems = "";
-        for(Inventory inventoryItem : inventoryList) {
-            inventoryItems += " " + inventoryItem.getItem() + " " + inventoryItem.getQuantity();
-        }
         //username.setText(inventoryItems);
         username.setText("Jason");
         password.setText("Sword");
